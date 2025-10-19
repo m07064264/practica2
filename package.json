@@ -1,0 +1,27 @@
+{
+  "name": "book-store",
+  "version": "2.0.0",
+  "description": "книжный магазин",
+  "keywords": [
+    "book-store"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "123"
+  },
+  "license": "UNLICENSED",
+  "author": "me",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "hbs": "^4.2.0",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.16.0"
+  }
+}

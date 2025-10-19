@@ -1,0 +1,63 @@
+.Form {
+	display: flex;
+	width: 30%;
+	height: 500px;
+	background: linear-gradient(to bottom, #ffff00, #dddd45);
+	border-radius: 30px;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.Container {
+	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 670px;
+	background: radial-gradient(ellipse at center,  #FFD700  20%, #ffffff 80%);
+}
+
+#info {
+	
+}
+.title {
+	font-size:30px;
+	display: flex;
+	justify-content: center;
+}
+.m {
+	display:flex;
+	flex-direction: row;
+}
+
+.f {
+	display:flex;
+	flex-direction:row;
+}
+.container-1 input {
+	width: 200px;
+}
+
+.reg input {
+	width: 180px;
+	height: 30px;	
+	background-image: repeating-linear-gradient(45deg, #dce775, #dce775, #dce775a1, #dce77563);
+	margin: 10px;
+	transition: transform 0.3s linear;
+	
+}
+.reg:hover {
+	transform: scale(1.1);
+}
+.log-in a {
+
+	color: #000000;
+	text-decoration: none;
+	font-size: 25px;
+	 transition: transform 0.3s linear;
+
+}
+.log-in:hover {
+	transform: scale(1.1);
+}

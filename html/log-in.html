@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles_form.css"/>
+    <title>Регистрация</title>
+</head>
+<body>
+
+<div class="Container">
+    <div class="Form" style="height: 300px;">
+        <form action="log-in" method="post">
+        <div class="container-1">
+            <div class="title"><p>Войти</p></div>
+
+            <div id="log">
+                <p>Номер телефона или почта</p>
+                <input id="log" name="log" type="text"/>
+            </div>
+
+            <div id="password">
+                <p>Введите пароль</p>
+                <input id="passId" name="pass" type="password" />
+            </div>
+
+            <div id="submit" class="reg">
+                <input type="submit" value="Войти" />
+            </div>
+        </div>
+        </form>
+                
+        </div>
+		</div>
+        
+<script>
+    function submit() {
+
+        let log = document.getElementById("log");
+        let password = document.getElementById("passId");
+
+        async function send() {
+            const response = await fetch("/log-in", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({
+                    log, password
+                })
+            });
+             const responseText = await response.text();
+        console.log(responseText);
+        }
+       
+    }
+</script>
+</body>
+</html>

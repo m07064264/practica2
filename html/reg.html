@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles_form.css"/>
+    <title>Регистрация</title>
+</head>
+<body>
+
+<div class="Container">
+    <div class="Form" id="myform">
+        <form action="reg" method="post">
+        <div class="container-1">
+            <div class="title"><p>Регистрация</p></div>
+
+            <div id="number">
+                <p>Введите ваш номер телефона</p>
+                <input id="numberId" name="number" type="tel" placeholder="+7 (xxx) xxx xx xx" />
+            </div>
+
+            <div id="email">
+                <p>Введите вашу почту</p>
+                <input id="emailId" name="email" type="email" />
+            </div>
+
+            <div id="password">
+                <p>Введите пароль</p>
+                <input id="password" name="password" type="password"/>
+            </div>
+
+            <div id="repeated-password">
+                <p>Введите пароль ещё раз</p>
+                <input id="repeated-password" name="repeated-password" type="password"/>
+            </div>
+
+            <div id="submit" class="reg">
+                <input type="submit" value="Зарегистрироваться" />
+            </div>
+        </div>
+        </form>
+                или
+                <div class="log-in"><a href="/html/log-in.html">Войти</a>
+            
+        </div>
+		</div>
+        
+
+
+<script>
+        
+
+       let number = document.getElementById("numberId").value;
+        let email = document.getElementById("emailId").value;
+        let password = document.getElementById("password").value;
+
+        const encoder = new TextEncoder();
+    const data = encoder.encode(password);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+    
+    
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const hashed_password = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        console.log(hashed_password);
+
+    let myform = document.getElementById("myform");
+    myform.addEventListener("submit", async(e) => {
+
+        
+        if (password !== document.getElementById("repeated-password").value) {
+            
+            alert("пароли не совпадают!");
+            return;
+        }    
+    });
+    function submit() {
+
+        console.log("номер телефона " + number);
+        console.log("email " + email);
+
+        async function send() {
+            const response = await fetch("/reg", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({
+                    number, email, hashed_password
+                })
+            });
+             const data = await response.json();
+        console.log(data);
+        }
+    }
+</script>
+</body>
+</html>

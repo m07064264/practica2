@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+<meta charset = "utf-8">
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/media.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <div class="top-bar-container">
+
+        <div class="top-bar">
+
+            <div class="logotype">
+                <a href="/html/index1.html">
+                    BookLib<i class="bi bi-book">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="60" fill="currentColor" class="bi bi-book" viewBox="0 0 16 16">
+                            <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783" />
+                        </svg>
+                    </i>
+                </a>
+            </div>
+            <div class="action-buttons">
+                <div class="separator"></div>
+                <a href="/html/navigation/избранное.html">
+                    Избранное<i class="bi bi-heart">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#ffffff" class="bi bi-heart" viewBox="0 0 16 16">
+                            <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
+                        </svg>
+                    </i>
+                </a>
+                <a href="/html/navigation/корзина.html">
+                    Корзина<i class="bi bi-bag-dash-fill">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#ffffff" class="bi bi-bag-dash-fill" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0M6 9.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1z" />
+                        </svg>
+                    </i>
+                </a>
+                <a href="/html/reg.html">
+                    Войти<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z"/>
+  <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708z"/>
+</svg>
+                </a>
+            </div>
+            <div class="search-field" id="search">
+                <input type="text" class="form-control" placeholder="Поиск" aria-label="Поиск" aria-describedby="button-addon2" id="search-req">
+                <button class="btn btn-outline-secondary" type="button" onclick="buttonSearch">Искать</button>
+            </div>
+                <script>
+                    function buttonSearch() {
+                    let search = document.getElementById("search-req").value;
+
+                    async function send() {
+            const response = await fetch("/search-request", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                
+                body: JSON.stringify({ search: search })
+                
+            });
+        }
+        send();
+    }
+
+                </script>
+            <div class="buttons-top">
+                <div class="hamb">
+                    <button onclick="toggleMenu()">
+
+                        <div class="hamburger-menu" id="hamburger"></div>
+                        <i class="bi bi-list">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+                            </svg>
+                        </i>
+                    </button>
+                    <div class="nav-menu" id="nav-menu">
+                        <a href="/html/navigation/главное.html">Для детей</a>
+                        <a href="/html/navigation/главное.html">Для школы</a>
+                        <a href="/html/navigation/главное.html">Популярное</a>
+                        <a href="/html/navigation/главное.html">Новинки</a>
+
+                    </div>
+                </div>
+                <div class="bookk">
+                    <button onclick="toggleBook()">
+                        <div class="book" id="book"></div>
+                        Книги
+
+                    </button>
+                    <div class="bookMenu" id="bookMenu">
+                        <a href="/html/navigation/главное.html">Научная фантастика</a>
+                        <a href="/html/navigation/главное.html">Детектив</a>
+                        <a href="/html/navigation/главное.html">Городское фентези</a>
+                        <a href="/html/navigation/главное.html">Триллер</a>
+                        <a href="/html/navigation/главное.html">Ужасы</a>
+                        <a href="/html/navigation/главное.html">Биография</a>
+                    </div>
+                </div>
+                <a href="/html/navigation/главное.html">Главное</a>
+                <a href="/html/navigation/ещё.html">Ещё</a>
+
+            </div>
+        </div>
+        <div class="menu">
+            <div class="nav-hot">
+                <a href="/html/navigation/доставка и оплата.html">доставка и оплата</a>
+                <a href="/html/navigation/рейтинги.html">рейтинги</a>
+                <a href="/html/navigation/новинки.html">новинки</a>
+                <a href="/html/navigation/скидки.html">скидки</a>
+            </div>
+            <div class="container-space"></div>
+            <div class="sup">
+                <a href="/html/navigation/поддержка.html">поддержка</a>
+                <a href="/html/navigation/поддержка.html">контакты</a>
+                8 800 800 80 80
+            </div>
+        </div>
+    </div>
+    <div class="background">
+
+        <div class="containers">
+            
+            <div class="container-bestseller">
+                <div class="left-arrow" id="left-arrow" onclick="toSlide"><</div>
+                <img src="/images/6856497.jpg" id="image-event"/><div class="separator3">
+                   </div><div class="right-arrow" id="right-arrow" onclick="toSlide">></div>
+
+
+                   <script>
+                    let images = ['6856497.jpg', 'banner_6707cbcf4a2fe.png', 
+                    'SYketSivf4s8I_TObLLBFlFNGhtudTX-kYVfOS8Xp1Gj5pqKzWTJSFS-PsArI08gRZaK1yZktQXWesHOaOz7FWcJ5xZMng=S21Znymx1t8xEnpL26uVRQ.jpg', 
+                    'красивая-библиотека-в-монастыре-corias-оно-имеет-полки-вполне-книг-и-125425289.webp'];
+                    let currentImageIndex = 0, currentImage;
+                    let image = document.getElementById("image-event");
+                    let prev = document.getElementById("left-arrow").addEventListener('click', function () { 
+
+                        --currentImageIndex;
+                        if (currentImageIndex < -(images.length - 1)) currentImageIndex = 0;
+                        currentImage = images.at(currentImageIndex);
+                        image.src = '/images/' + images.at(currentImageIndex);
+
+
+                    });
+                    let next = document.getElementById("right-arrow").addEventListener('click', function () {
+                        ++currentImageIndex;
+                        if (currentImageIndex > images.length - 1) currentImageIndex = 0;
+                        currentImage = images.at(currentImageIndex);
+                        image.src = '/images/' + images.at(currentImageIndex);
+
+                    });
+
+                    function toSlide() {}
+                   </script>
+            <div class="slider-bestseller">
+            <div class="container mt-3">Лучшая покупка дня
+    <div id="multiCarousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner" style="z-index: 1;">
+            <div class="carousel-item active">
+                <div class="row">
+                    <div class="col">
+                        <img src="/images/363-0 (14).webp" alt="Слайд 1">2324руб
+                    </div>
+                    <div class="col">
+                        <img src="/images/363-0 (13).png" alt="Слайд 2">1530руб
+                    </div>
+                    <div class="col">
+                        <img src="/images/363-0 (16).webp" alt="Слайд 3">5311руб
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row">
+                    <div class="col">
+                        <img src="/images/363-0 (11).png" alt="Слайд 4">5231руб
+                    </div>
+                    <div class="col">
+                        <img src="/images/363-0 (12).webp" alt="Слайд 5">634руб
+                    </div>
+                    <div class="col">
+                        <img src="/images/363-0 (6).webp" alt="Слайд 6">1432руб
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#multiCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Предыдущий</span>
+        </a>
+        <a class="carousel-control-next" href="#multiCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Следующий</span>
+        </a>
+    </div>
+</div></div></div>
+
+            <div class="slider-recommended">
+                <div class="container mt-5">
+                    <div id="multiCarousel" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="row">
+                                    <div class="col">
+                                        <img src="/images/363-0 (3).webp" alt="Слайд 1">2324руб
+                                    </div>
+                                    <div class="col">
+                                        <img src="/images/363-0 (7).webp" alt="Слайд 2">1530руб
+                                    </div>
+                                    <div class="col">
+                                        <img src="/images/363-0 (8).webp" alt="Слайд 3">5311руб
+                                    </div>
+                                    <div class="col">
+                                        <img src="/images/363-0 (2).webp" alt="Слайд 6">6542руб
+                                    </div>
+                                    <div class="col">
+                                        <img src="/images/242-0 (3).webp" alt="Слайд 6">3214руб
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row">
+                                    <div class="col">
+                                        <img src="/images/363-0 (5).webp" alt="Слайд 4">5231руб
+                                    </div>
+                                    <div class="col">
+                                        <img src="/images/363-0 (9).webp" alt="Слайд 5">634руб
+                                    </div>
+                                    <div class="col">
+                                        <img src="/images/363-0 (6).webp" alt="Слайд 6">1432руб
+                                    </div>
+                                    <div class="col">
+                                        <img src="/images/242-0.webp" alt="Слайд 6">543руб
+                                    </div>
+                                    <div class="col">
+                                        <img src="/images/242-0 (4).webp" alt="Слайд 6">6432руб
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#multiCarousel" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Предыдущий</span>
+                        </a>
+                        <a class="carousel-control-next" href="#multiCarousel" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Следующий</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slider-new">
+                <div class="container mt-5">
+                    <div id="multiCarousel" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="row">
+                                    <div class="col">
+                                        <img src="/images/363-0 (10).webp" alt="Слайд 1">2214руб
+                                    </div>
+                                    <div class="col">
+                                        <img src="/images/242-0 (5).webp" alt="Слайд 2">3322руб
+                                    </div>
+                                    <div class="col">
+                                        <img src="/images/242-0 (2).webp" alt="Слайд 3">1235руб
+                                    </div>
+                                    <div class="col">
+                                        <img src="/images/363-0.webp" alt="Слайд 6">3121руб
+                                    </div>
+                                    <div class="col">
+                                        <img src="/images/242-0 (11).webp" alt="Слайд 6">3214руб
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row">
+                                    <div class="col">
+                                        <img src="images\242-0 (8).webp" alt="Слайд 4">1242руб
+                                    </div>
+                                    <div class="col">
+                                        <img src="/images/242-0 (7).webp" alt="Слайд 5">523руб
+                                    </div>
+                                    <div class="col">
+                                        <img src="/images/242-0 (6).webp" alt="Слайд 6">1432руб
+                                    </div>
+                                    <div class="col">
+                                        <img src="/images/242-0 (10).webp" alt="Слайд 6">543руб
+                                    </div>
+                                    <div class="col">
+                                        <img src="/images/242-0 (9).webp" alt="Слайд 6">522руб
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#multiCarousel" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Предыдущий</span>
+                        </a>
+                        <a class="carousel-control-next" href="#multiCarousel" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Следующий</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="cont">
+        <div class="info">
+            Мы в соцсетях
+            <a href="https://vk.com">ВКонтакте<img src="https://cdn-icons-png.flaticon.com/128/145/145813.png" /></a>
+            <a href="https://telegram.org">Телеграм<img src="https://cdn-icons-png.flaticon.com/128/2111/2111646.png" /></a>
+            <a href="https://dzen.ru">Дзен<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Yandex_Zen_logo_icon.svg/768px-Yandex_Zen_logo_icon.svg.png" /></a>
+        </div>
+        <div class="help">
+            Помощь
+            <a href="/html/navigation/как сделать заказ.html">Как сделать заказ</a>
+            <a href="/html/navigation/поддержка.html">Поддержка</a>
+            <a href="/html/navigation/поддержка.html">Напишите нам</a>
+            <a href="/html/navigation/как сделать заказ.html">FAQ</a>
+        </div>
+        <div class="about">
+            Всякое
+            <a href="/html/navigation/скидки.html">Акции</a>
+            <a href="/html/navigation/скидки.html">Скидки</a>
+            <a href="/html/navigation/рейтинги.html">Сувениры</a>
+            <a href="/html/navigation/рейтинги.html">Концтовары</a>
+        </div>
+        <div class="connect">
+            Связь
+            <a href="/html/navigation/поддержка.html">Партнёрам</a>
+            <a href="/html/navigation/поддержка.html">Хотите у нас работать?</a>
+        </div>
+    </div>
+    <div class="container-contacts">
+        <div class="separator2">
+            <div class="copyright">© Холдинг BookLib 8 800-800-80-80</div>
+        </div>
+    </div>
+    <script>
+
+        function toggleMenu() {
+            const menu = document.getElementById('nav-menu');
+            menu.classList.toggle('active');
+        }
+
+
+        document.getElementById('hamburger').addEventListener('click', toggleMenu);
+    </script>
+
+    <script>
+        function toggleBook() {
+            const bookMenu = document.getElementById('bookMenu');
+            bookMenu.classList.toggle('active');
+        }
+        document.getElementById('book').addEventListener('click', toggleBook);
+    </script>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
